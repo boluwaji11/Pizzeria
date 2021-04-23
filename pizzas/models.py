@@ -15,4 +15,4 @@ class Topping(models.Model):
     name = models.TextField()
 
     def __str__(self):
-        return f"{self.name[:10]}..."
+        return f"{self.name[:50]}..."
