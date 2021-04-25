@@ -13,18 +13,4 @@
 
     {% endfor %}
 
-<h2>Comments</h2>
-    {% for comment in comments %}
-    <h5>
-        {{comment.name|linebreaks}}
-    </h5>
-    {% empty %}
-    <h3>No comment yet!</h3>
-
-    {% endfor %}
-<p>
-    <a href="{% url 'pizzas:comment' pizza.id %}">Add comment</a>
-    
-</p>
-
 {% endblock content%}
