@@ -4,13 +4,43 @@
 
 <h1>Menu: {{ pizza }}</h1>
 
+<!-- Display the toppings -->
     {% for topping in toppings %}
     <h3>
         {{topping.name|linebreaks}}
     </h3>
     {% empty %}
     <h3>More details on this pizza will be provided soon</h3>
-
     {% endfor %}
+
+<!-- Display the comments -->
+    {% for comment in comments %}
+      <p>
+        Comment {{ forloop.counter }} by {{ comment.name }}
+        {{ comment.created }}
+      </p>
+      {{ comment.comment|linebreaks }}
+    {% empty %}
+        <p>There are no comments yet.</p>
+    {% endfor %}
+
+<!-- Display Message on submission -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+<!-- Comment form  -->
+    
+    <h2>Add a new comment</h2>
+    <form action="{% url 'pizzas:pizza' pizza.id %}" method="post">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+    <button name="submit">Add comment</button>
+    </form>
+
 
 {% endblock content%}
