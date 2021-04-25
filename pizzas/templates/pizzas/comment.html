@@ -5,8 +5,10 @@
 <p><a href="{% url 'pizzas:pizza' pizza.id %}">{{pizza}}</a></p>
 
 <form action="{% url 'pizzas:comment' pizza.id %}" method='post'>
+
     {% csrf_token %}
-    {{form.as_p}}
+    {{ form.as_p }}
+
     <button name="submit">Comment</button>
 </form>
 

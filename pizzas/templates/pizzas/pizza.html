@@ -4,14 +4,27 @@
 
 <h1>Menu: {{ pizza }}</h1>
 
-<ul>
     {% for topping in toppings %}
-    <li>
-        <p>{{topping.name|linebreaks}}</p>
-    </li>
+    <h3>
+        {{topping.name|linebreaks}}
+    </h3>
     {% empty %}
-    <li>More details on this pizza will be provided soon</li>
+    <h3>More details on this pizza will be provided soon</h3>
+
     {% endfor %}
-</ul>
+
+<h2>Comments</h2>
+    {% for comment in comments %}
+    <h5>
+        {{comment.name|linebreaks}}
+    </h5>
+    {% empty %}
+    <h3>No comment yet!</h3>
+
+    {% endfor %}
+<p>
+    <a href="{% url 'pizzas:comment' pizza.id %}">Add comment</a>
+    
+</p>
 
 {% endblock content%}
