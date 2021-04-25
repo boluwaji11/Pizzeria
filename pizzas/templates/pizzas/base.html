@@ -1,8 +1,22 @@
-<p>
-    <a href="{% url 'pizzas:index' %}">Shorty’s Pizza Shack</a>
-    <a href="{% url 'pizzas:pizzas' %}">Menu</a>
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="icon" href="{% static '1_85295.ico' %}">
+    <title>Best Pizza in Waco</title>
 
-{% block content %}
+</head>
+<body class="main">
+   <div class="navbar">
+    <ul class="navbar">
+        <li class="item"><a class="active" href="{% url 'pizzas:index' %}">Shorty’s Pizza Shack</a></li>
+        <li class="item"><a href="{% url 'pizzas:pizzas' %}">Menu</a></li>
+    </ul>
+    </div>
+    {% block content %}
+    
+    {% endblock content %}
 
-{% endblock content %}
+</body>
+</html>
