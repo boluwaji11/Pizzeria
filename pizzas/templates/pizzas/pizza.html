@@ -34,11 +34,11 @@
     {% endif %}
 
 <!-- Comment form  -->
-    
+{% load crispy_forms_tags %}
     <h2>Add a new comment</h2>
     <form action="{% url 'pizzas:pizza' pizza.id %}" method="post">
         {% csrf_token %}
-        {{ comment_form.as_p }}
+        {{ comment_form | crispy }}
     <button name="submit">Add comment</button>
     </form>
 
