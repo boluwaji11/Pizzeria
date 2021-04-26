@@ -10,13 +10,13 @@ padding-bottom: 30px; text-align: center; font-family: Roboto, sans-serif;">
 style="height: 300px; width: 300px; padding-top: 10px;">
 
 
-<h1>Menu: {{ pizza }}</h1>
+<h1>{{ pizza }}</h1>
 
 <!-- Display the toppings -->
     {% for topping in toppings %}
-    <h2 style="padding-left: 10px;">
+    <h3 style="padding-left: 30px; padding-right: 30px;">
         {{topping.name}}
-    </h2>
+    </h3>
     {% empty %}
     <h3>More details on this pizza will be provided soon</h3>
     {% endfor %}
