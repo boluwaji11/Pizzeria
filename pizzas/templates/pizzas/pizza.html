@@ -2,33 +2,44 @@
 
 {% block content %}
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <div style="padding-top: 60px;
-padding-left: 30px; text-align: center;">
+padding-bottom: 30px; text-align: center; font-family: Roboto, sans-serif;">
+
+<img src="{{pizza.image.url}}" alt="" 
+style="height: 300px; width: 300px; padding-top: 10px;">
+
+
 <h1>Menu: {{ pizza }}</h1>
 
 <!-- Display the toppings -->
     {% for topping in toppings %}
-    <h3>
-        {{topping.name|linebreaks}}
-    </h3>
+    <h2 style="padding-left: 10px;">
+        {{topping.name}}
+    </h2>
     {% empty %}
     <h3>More details on this pizza will be provided soon</h3>
     {% endfor %}
 
 <!-- Display the comments -->
+<div style="background-color: #1a2c28; height: 600px; color: white; padding-top: 10px;">
+
+    <div style="float: left; text-align: left; padding-left: 30px;">
+    <h2>Comments</h2>
     {% for comment in comments %}
-      <p>
-        Comment {{ forloop.counter }} by {{ comment.name }}
+      <p style="font-weight:bold; font-size: 15px; font-style: italic; color: grey;">
+        Comment by {{ comment.name }} on
         {{ comment.created }}
       </p>
       {{ comment.comment|linebreaks }}
     {% empty %}
         <p>There are no comments yet.</p>
     {% endfor %}
+    </div>
 
 <!-- Display Message on submission -->
     {% if messages %}
-    <ul class="messages">
+    <ul class="messages" style="list-style-type: none">
         {% for message in messages %}
         <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
         {% endfor %}
@@ -36,14 +47,28 @@ padding-left: 30px; text-align: center;">
     {% endif %}
 
 <!-- Comment form  -->
-{% load crispy_forms_tags %}
-    <h2>Add a new comment</h2>
-    <form action="{% url 'pizzas:pizza' pizza.id %}" method="post">
-        {% csrf_token %}
-        {{ comment_form | crispy }}
-    <button name="submit">Add comment</button>
-    </form>
+    <div style="float: right; padding-right: 250px;">
+    {% load crispy_forms_tags %}
+        <h2>Describe your Experience</h2>
+        <form action="{% url 'pizzas:pizza' pizza.id %}" method="post">
+            {% csrf_token %}
+            {{ comment_form | crispy }}
+        <button name="submit" style="font-size: 15px; font-weight: bolder;">Add Comment</button>
+        </form>
+    </div>
 
+</div>
+
+</div>
+
+<footer style="  text-align: center;
+padding: 0px;
+background-color: white;
+font-family: Roboto Black,sans-serif;
+color: #1a2c28;">
+    <p>Designed by: Boluwaji Oyewumi</p>
+    <p style="font-style: italic;"><a href="mailto:boluwajioyewumi@gmail.com">boluwajioyewumi@gmail.com</a></p>
+</footer>
 
 {% endblock content%}
-</div>
+

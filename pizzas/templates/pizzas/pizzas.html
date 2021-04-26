@@ -1,10 +1,10 @@
 {% extends 'pizzas/base.html' %}
 
 {% block content %}
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <div style="padding-top: 60px;
-            padding-left: 30px;
-            font-family: Roboto Black;">
+            padding-left: 25px;
+            font-family: Roboto Black; height: 200px;">
 
     <h1 style="font-family: Roboto Black;">Our Pizza Menu</h1>
     <h3>Click on any of the images to see our mouth watering pizza toppings</h3>
@@ -13,10 +13,10 @@
         <div style="display:flex;">
         {% for pizza in pizzas %}
 
-        <li style="flex: 25%; padding: 5px;">
+        <li style="flex: 24%; padding: 5px;">
             
             <a href="{% url 'pizzas:pizza' pizza.id %}"><img src="{{pizza.image.url}}" alt="" 
-                style="height: 300px; width: 300px;"></a>
+                style="height: 280px; width: 280px;"></a>
             <h2>{{pizza}}</h2>
         </li>
 
@@ -26,6 +26,7 @@
         </div>
     </ul>
 
-    {% endblock content%}
+</div> 
 
-</div>
+{% endblock content%}
+
