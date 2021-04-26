@@ -3,21 +3,27 @@
 {% block content %}
 
 <div style="padding-top: 60px;
-            padding-left: 30px;">
+            padding-left: 30px;
+            font-family: Roboto Black;">
 
     <h1 style="font-family: Roboto Black;">Our Pizza Menu</h1>
+    <h3>Click on any of the images to see our mouth watering pizza toppings</h3>
 
     <ul style="list-style-type: none; padding-left:0px">
-        {% load static %}
-        <img src="{% static 'pepperoni.jpg'%}" alt="Pepperoni"">
-
+        <div style="display:flex;">
         {% for pizza in pizzas %}
-        <li>
-            <a href="{% url 'pizzas:pizza' pizza.id %}">{{pizza}}</a>
+
+        <li style="flex: 25%; padding: 5px;">
+            
+            <a href="{% url 'pizzas:pizza' pizza.id %}"><img src="{{pizza.image.url}}" alt="" 
+                style="height: 300px; width: 300px;"></a>
+            <h2>{{pizza}}</h2>
         </li>
+
         {% empty %}
         <li>Currently, no pizza on menu</li>
         {% endfor %}
+        </div>
     </ul>
 
     {% endblock content%}

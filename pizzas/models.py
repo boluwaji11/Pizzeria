@@ -1,10 +1,12 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
 
 class Pizza(models.Model):
     name = models.CharField(max_length=200)
+    image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -23,8 +25,8 @@ class Comment(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
     comment = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(default=timezone.now)
+    updated = models.DateTimeField(default=timezone.now)
     active = models.BooleanField(default=True)
 
     class Meta:
