@@ -28,11 +28,12 @@ style="height: 300px; width: 300px; padding-top: 10px;">
     <div style="float: left; text-align: left; padding-left: 8%;">
     <h2>Comments</h2>
     {% for comment in comments %}
+    {{ comment.comment|linebreaks }}
       <p style="font-weight:bold; font-size: 15px; font-style: italic; color: grey;">
         Comment by {{ comment.name }} on
         {{ comment.created }}
       </p>
-      {{ comment.comment|linebreaks }}
+      
     {% empty %}
         <p>There are no comments yet.</p>
     {% endfor %}
